@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/synonymdev/slashtags-bootstrap-server#readme",
   "dependencies": {
+    "@hyperswarm/dht": "^6.2.1",
     "config": "^3.3.7",
     "hyperswarm": "^3.0.4"
   }
