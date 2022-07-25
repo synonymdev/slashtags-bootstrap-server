@@ -20,6 +20,7 @@
   "dependencies": {
     "@hyperswarm/dht": "^6.2.1",
     "config": "^3.3.7",
+    "debug": "^4.3.4",
     "hyperswarm": "^3.0.4"
   }
 }

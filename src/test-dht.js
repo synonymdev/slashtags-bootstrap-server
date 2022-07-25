@@ -1,12 +1,14 @@
+import createDebug from 'debug'
 import DHT from '@hyperswarm/dht'
 import Hyperswarm from 'hyperswarm'
 
+const debug = createDebug('test-dht')
 const topic = Buffer.alloc(32).fill('testing dht')
 
-// This one will use our local server as the bootstrap server
+// This one will use our local server as the bootstrap server (127.0.0.1:4000)
 const dhtLocal = new DHT({ bootstrap: ['127.0.0.1:4000'] })
 
-console.log('starting local')
+debug('starting local')
 const swarmLocal = new Hyperswarm({ dht: dhtLocal })
 swarmLocal.on('connection', (conn, peerInfo) => {
     console.log('Local has a connection', peerInfo.publicKey.toString('hex'))
@@ -19,7 +21,7 @@ swarmLocal.join(topic)
 await swarmLocal.flush()
 
 // This one will start normally, using the default set of bootstrap servers
-console.log('starting normal')
+debug('starting normal')
 const swarmNormal = new Hyperswarm()
 swarmNormal.on('connection', (conn, peerInfo) => {
     console.log('normal has a connection', peerInfo.publicKey.toString('hex'))
